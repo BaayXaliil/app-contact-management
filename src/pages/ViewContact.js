@@ -15,6 +15,8 @@ function ViewContact({setVisible}) {
         dispatch(getSingleUser(id));
         setVisible(true);
     }, [])
+
+    
     return (
         <div className="site-card-border-less-wrapper">
             <Card
