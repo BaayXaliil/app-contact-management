@@ -6,13 +6,14 @@ import { Link, useParams } from "react-router-dom";
 import { getSingleUser } from '../redux/action';
 
 
-function ViewContact() {
+function ViewContact({setVisible}) {
     const { id } = useParams();
     let dispatch = useDispatch();
     const { user } = useSelector((state) => state.data)
 
     useEffect(() => {
-        dispatch(getSingleUser(id))
+        dispatch(getSingleUser(id));
+        setVisible(true);
     }, [])
     return (
         <div className="site-card-border-less-wrapper">

@@ -123,7 +123,7 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     );
 };
 
-const Home = () => {
+const Home = ({showNavlink}) => {
     const [form] = Form.useForm();
     const [editingKey, setEditingKey] = useState('');
     const [visible, setVisible] = useState(false);
@@ -131,7 +131,8 @@ const Home = () => {
     const { users } = useSelector((state) => state.data);
 
     useEffect(() => {
-        dispatch(loadUsers())
+        dispatch(loadUsers());
+        showNavlink(false);
     }, [])
 
     const success = (text) => {
@@ -231,7 +232,7 @@ const Home = () => {
                 ) : (
                     <div className='buttons'>
                         <Link to={`/add-contact/${record.key}`}>
-                            <Tooltip placement="top" title="Editer" color="blue">
+                            <Tooltip placement="top" title="Voir" color="blue">
                                 <EyeOutlined />
                             </Tooltip>
                         </Link>
@@ -241,7 +242,7 @@ const Home = () => {
                             </Tooltip>
                         </Typography.Link>
                         <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key)}>
-                            <Tooltip placement="top" title="Editer" color="red">
+                            <Tooltip placement="top" title="Supprimer" color="red">
                                 <a><DeleteOutlined style={{ 'color': 'red' }} /></a>
                             </Tooltip>
                         </Popconfirm>
